@@ -1,0 +1,35 @@
+body {
+    background: rgb(167, 0, 0);
+}
+
+.header {
+    display: flex;
+    height: 300px;
+    width: 500px;
+    margin: auto;
+}
+
+#avenger {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px 10px;
+    width: 100%;
+}
+
+.card {
+    font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: black;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+}
+
+.avg {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+}
