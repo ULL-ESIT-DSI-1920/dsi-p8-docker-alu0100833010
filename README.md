@@ -6,26 +6,26 @@ _Práctica 8.  Docker._
 
 ### ¿Qué es Docker? 
 
-**WebComponents** es un método de programación de desarrollo Web que nos permite crear nuestras propias etiquetas _HTML_ 
-con sus propias funcionalidades además de encapsular código _HTML_, _CSS_ y _Javascript_, de manera que el código de la página que
-lo incluye no le afecte. Se suelen identificar por el **guión** en el nombre de la etiqueta, como por ejemplo: `<kart-player>`.
+**Docker** es un proyecto de código abierto que sirve para automatizar el despliegue de aplicaciones dentro de _contenedores_ software. En los contenedores se integra la
+aplicación y es posible crear varios contenedores, unirlos y utilizarlos conjuntamente.
 
-* **ShadowDOM**: 
+* **¿Por qué Docker**: 
 
-El **ShadowDOM** es la tecnología que nos permite encapsular trozos de _HTML_, junto con código _CSS_ y _Javascript_ para que no
-afecte al resto de código de la página. Este árbol DOM quedaría "oculto entre las sombras" dentro de un archivo que tiene el árbol
-DOM en la luz (_Light DOM_), por lo que el navegador mostrará una "mezcla" de ambos árboles de la forma que hayamos definido
-(_composed DOM_). 
+  Un _contenedor_ de **Docker** se reemplaza por el motor de Docker y el SO no está integrado en el contenedor porque se usa Docker para interactuar con él.
+  
+  * * Aislamiento entre aplicaciones, aislamiento entre servicios y aislamiento inteligente.
+  * *	Portabilidad, organización y control de versiones.
+
+* **Partes de Docker:**
+
+  * *	**Aplicación de Docker**: Motor que nos permite arrancar cualquier sistema disponible en las imágenes de Docker. También podemos crear nuestras propias imágenes.
+  *	* **Imagen de Docker**: Sistema ya preestablecido para arrancar en la máquina.
+  * *	**Contenedor**: Es creado en base a una imagen.
 
 * **Objetivo**:
 
-El objetivo de la práctica es crear una pequeña carrera de **Mario Kart**. Para ello, utilizaremos **WebComponents** para encapsular 
-conceptos clave de la práctica, como los kart de cada personaje. De esta forma, podríamos crear un _WebComponent_ llamado `KartPlayer`.
-Este componente es similar al concepto de clases en programación (de hecho, extiende de `HTMLElement`), y se recomienda que se vea 
-como una extensión para crear una etiqueta _HTML_ propia y personalizada a la que le daremos funcionalidad y apariencia. 
-
-La idea es que nuestra etiqueta HTML `<kart-player>` (o componente `KartPlayer`), incluya, maneje y controle datos del kart para encapsular 
-su funcionamiento y hacernos más fácil y cómodo trabajar con él, sin que repercuta con el resto de la página.
+El objetivo de esta práctica es aprender el funcionamiento de Docker montando dos contenedores, que se crearán a partir de dos ficheros Dockerfile y uniéndolos a través de
+Docker compose. En el primero de ellos tendremos una aplicación Node (Backend) y en el segundo una web utilizando Parcel (Frontend).
 
 ## Comenzando
 
