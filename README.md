@@ -34,22 +34,30 @@ aplicación y es posible crear varios contenedores, unirlos y utilizarlos conjun
 
 ## Comenzando
 
-### 1. Crea un proyecto en _Parcel_.
+### 1. Crea un proyecto con _Docker_.
 
-Como en prácticas anteriores, para comenzar crearemos un proyecto con Parcel para poder trabajar y realizar la práctica. Para ello 
-comenzamos creando la estructura del proyecto .
+Para ello comenzamos creando la estructura del proyecto.
 
 #### Pasos para crear el proyecto.
 
 * **Scaffolding** 
 
-  Creamos las carpetas:
+  Creamos la siguiente estructura de archivos y carpetas:
   ```
-  mkdir -p nombre-repo/src/{css,js,assets}
-  ```
-  Nos situamos en el repo:
-  ```
-  cd nombre-repo
+  + backend/                  Carpeta con la app node
+      - server.js              Applicación node
+      - data.json              Fichero de datos JSON
+      - Dockerfile             Info para generar el contenedor de Docker
+      - package.json           Info del proyecto backend
+      - run.sh                 Script para crear el contenedor
+  + frontend/                 Carpeta con la web con parcel
+      - src/                   Carpeta con los ficheros fuente del front
+      - Dockerfile             Info para generar el contenedor de Docker
+      - nginx.conf             Configuración del servidor web Nginx
+      - package.json           Info del proyecto frontend
+      - run.sh                 Script para crear el contenedor
+  - docker-compose.yml        Fichero de Docker Compose (ver más adelante)
+  - run.sh                    Script para lanzar Docker Compose
   ```
 * **Git**
 
