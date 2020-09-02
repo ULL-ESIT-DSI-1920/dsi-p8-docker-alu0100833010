@@ -22,11 +22,6 @@ aplicación y es posible crear varios contenedores, unirlos y utilizarlos conjun
   *	* **Imagen de Docker**: Sistema ya preestablecido para arrancar en la máquina.
   * *	**Contenedor**: Es creado en base a una imagen.
 
-* **Docker Compose:**
-
-  Docker Compose es una herramienta que permite simplificar el uso de Docker. A partir de archivos YAML es mas sencillo crear contendores, conectarlos, habilitar puertos,
-  volumenes, etc.
-
 * **Objetivo**:
 
   El objetivo de esta práctica es aprender el funcionamiento de Docker montando dos contenedores, que se crearán a partir de dos ficheros Dockerfile y uniéndolos a través de
@@ -223,6 +218,7 @@ Ahora, al igual que hicimos con **node**, debemos crear un contenedor para almac
 ![Captura13](src/assets/captures/cap13.png)
 
 En el primer stage, copiaremos los archivos del proyecto, e instalaremos las dependencias de node que pudieramos tener y las globales (como _parcel_), y generaremos el _build_.
+(En este paso desinstalamos _parcel_ del _frontend_ que habíamos instalado antes para ir comprobando nuestra aplicación antes de dockerizarla).
 
 En el segundo stage, montaremos un servidor web como **Nginx**, que obtendrá el build del stage anterior y la pondrá en la carpeta del servidor web.
 
@@ -246,5 +242,29 @@ De la misma forma que el anterior, el fichero `run.sh` debe tener los comandos d
 
 En esta ocasión indicamos que el puerto 80 de este contenedor se envíe al puerto 80 del equipo anfitrión.
 
-### 6. _Docker-compose_.
+### 6. Unir frontend y backend con _Docker Compose_.
+
+Una vez tengamos ambos contenedores, nuestro objetivo será crear un fichero docker-compose.yml fuera de las carpetas frontend y backend para unir los dos contenedores
+anteriores. 
+
+La estructura de archivos es la siguiente:  
+
+![Captura](src/assets/captures/cap8.png)
+
+#### ¿Qué es Docker Compose?
+
+**Docker Compose** es una herramienta que permite simplificar el uso de Docker. A partir de archivos YAML es mas sencillo crear contendores, conectarlos, habilitar puertos,
+volumenes, etc.
+
+* **Instalación de Docker Compose**:
+
+	Ejecutamos los siguientes comandos:
+	
+	```
+	$ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/docker-compose
+	$ sudo chmod +x /usr/local/bin/docker-compose
+	$ docker-compose --version
+	```
+El fichero run.sh debe construir y levantar los servicios definidos en el archivo docker-compose.yml, esto es:
+
 
