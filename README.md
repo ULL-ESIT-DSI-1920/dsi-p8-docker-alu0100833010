@@ -117,23 +117,23 @@ Nos situamos sobre la carpeta _Backend_:
   ```
 La estructura de archivos es la siguiente:  
 
-![Captura1](src/assets/captures/cap1.png)
+![Captura1](captures/cap1.png)
 
 Para correr nuestro servidor node con nuestra aplicación, ejecutamos `node server.js`.
 
 El primer _contenedor_ albergará una sencillísima aplicación **Node** en el fichero `server.js`, a la que instalaremos con npm la dependencia _express_. 
 
-![Captura2](src/assets/captures/cap2.png)
+![Captura2](captures/cap2.png)
 
 Nuestra aplicación escuchará y responderá dos peticiones al correr nuestro servidor:
 
 * `/`: Petición a la página principal que nos devuelve la versión de la app.
 
-![Captura3](src/assets/captures/cap3.png)
+![Captura3](captures/cap3.png)
 
 * `/api`: Petición a la ruta que nos devuelve un _JSON_ con información de los vengadores, incluidos en el fichero data.json.
 
-![Captura4](src/assets/captures/cap4.png)
+![Captura4](captures/cap4.png)
 
 ### 3. Dockerizar el _Backend_.
 
@@ -142,7 +142,7 @@ hacer funcionar la aplicación.
 
 Para ello, crearemos un fichero `Dockerfile`:
   
-![Captura5](src/assets/captures/cap5.png)  
+![Captura5](captures/cap5.png)  
 
 Donde especificamos:
 
@@ -161,11 +161,11 @@ Donde especificamos:
 A continuación, creamos y ejecutamos nuestro contenedor. Para ello, creamos un fichero `run.sh` con los comandos necesarios para construir la imagen de docker y ejecutar el
 contenedor basado en esa imagen.
 
- ![Captura6](src/assets/captures/cap6.png)
+ ![Captura6](captures/cap6.png)
  
 Al ejecutar `$ docker images`, nos debería aparecer la imagen de **Docker** que acabamos de crear:
 
-![Captura7](src/assets/captures/cap7.png)
+![Captura7](captures/cap7.png)
 
 ### 4. Crear nuestra web _Frontend_.
 
@@ -187,27 +187,27 @@ Nos situamos sobre la carpeta _Frontend_:
   ```
 La estructura de archivos es la siguiente:  
 
-![Captura8](src/assets/captures/cap8.png)
+![Captura8](captures/cap8.png)
   
 Y pasamos a configurar nuestra web:
 
 * `index.html`
 
-![Captura9](src/assets/captures/cap9.png)
+![Captura9](captures/cap9.png)
 
 * `index.css`
 
-![Captura10](src/assets/captures/cap10.png)
+![Captura10](captures/cap10.png)
 
 * `index.js`
 
-![Captura11](src/assets/captures/cap11.png)
+![Captura11](captures/cap11.png)
 
 Realizamos un `fetch` a la URL de la API de **Node**. 
 
 * `Avenger.js`
 
-![Captura12](src/assets/captures/cap12.png)
+![Captura12](captures/cap12.png)
 
 A grandes rasgos, nuestra aplicación es similar a la _práctica 4: PokeDex_.
 
@@ -215,7 +215,7 @@ A grandes rasgos, nuestra aplicación es similar a la _práctica 4: PokeDex_.
 
 Ahora, al igual que hicimos con **node**, debemos crear un contenedor para almacenar nuestra web frontend. En este caso, deberemos crear una imagen _multi-stage_. 
 
-![Captura13](src/assets/captures/cap13.png)
+![Captura13](captures/cap13.png)
 
 En el primer stage, copiaremos los archivos del proyecto, e instalaremos las dependencias de node que pudieramos tener y las globales (como _parcel_), y generaremos el _build_.
 (En este paso desinstalamos _parcel_ del _frontend_ que habíamos instalado antes para ir comprobando nuestra aplicación antes de dockerizarla).
@@ -231,14 +231,14 @@ En el segundo stage, montaremos un servidor web como **Nginx**, que obtendrá el
 	Sobreescribimos el fichero `/etc/nginx/conf.d/default.conf` de la imagen de docker de Nginx. Ahí debe estar nuestra propia configuración, que será, como mínimo, la
 	siguiente:
 
-	![Captura14](src/assets/captures/cap14.png)
+	![Captura14](captures/cap14.png)
 
 	En la primera ruta indicamos la carpeta donde hemos copiado nuestro _build_ para que envíe al usuario al `index.html` (frontend). En la segunda hay que hacer un
 	**proxy_pass** a nuestro _backend_.
 
 De la misma forma que el anterior, el fichero `run.sh` debe tener los comandos de **Docker** correspondientes:
 
-![Captura15](src/assets/captures/cap15.png)
+![Captura15](captures/cap15.png)
 
 En esta ocasión indicamos que el puerto 80 de este contenedor se envíe al puerto 80 del equipo anfitrión.
 
@@ -249,7 +249,7 @@ anteriores.
 
 La estructura de archivos es la siguiente:  
 
-![Captura16](src/assets/captures/cap16.png)
+![Captura16](captures/cap16.png)
 
 #### ¿Qué es Docker Compose?
 
@@ -269,26 +269,26 @@ volumenes, etc.
 	```
 El fichero `run.sh` debe construir y levantar los servicios definidos en el archivo `docker-compose.yml`, esto es:
 
-![Captura17](src/assets/captures/cap17.png)
+![Captura17](captures/cap17.png)
 
 Por último, el `docker-compose.yml` debe definir dos servicios, uno para **node** y otro para **nginx** y los enlazamos por la misma network.
 
-![Captura18](src/assets/captures/cap18.png)
+![Captura18](captures/cap18.png)
 
 Abrimos el puerto de **nginx** al 80 e indicamos en `build` el contexto de cada servicio.
 
 Finalmente ejecutamos `run.sh`:
 
-![Captura19](src/assets/captures/cap19.png)
+![Captura19](captures/cap19.png)
 
 * `/`:
 
-![Captura20](src/assets/captures/cap20.png)
+![Captura20](captures/cap20.png)
 
 * `/api`:
 
-![Captura21](src/assets/captures/cap21.png)
+![Captura21](captures/cap21.png)
 
 * `/api/version`:
 
-![Captura22](src/assets/captures/cap22.png)
+![Captura22](captures/cap22.png)
