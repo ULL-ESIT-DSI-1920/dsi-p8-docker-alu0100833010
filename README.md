@@ -22,10 +22,15 @@ aplicación y es posible crear varios contenedores, unirlos y utilizarlos conjun
   *	* **Imagen de Docker**: Sistema ya preestablecido para arrancar en la máquina.
   * *	**Contenedor**: Es creado en base a una imagen.
 
+* **Docker Compose:**
+
+  Docker Compose es una herramienta que permite simplificar el uso de Docker. A partir de archivos YAML es mas sencillo crear contendores, conectarlos, habilitar puertos,
+  volumenes, etc.
+
 * **Objetivo**:
 
-El objetivo de esta práctica es aprender el funcionamiento de Docker montando dos contenedores, que se crearán a partir de dos ficheros Dockerfile y uniéndolos a través de
-Docker compose. En el primero de ellos tendremos una aplicación Node (Backend) y en el segundo una web utilizando Parcel (Frontend).
+  El objetivo de esta práctica es aprender el funcionamiento de Docker montando dos contenedores, que se crearán a partir de dos ficheros Dockerfile y uniéndolos a través de
+  Docker compose. En el primero de ellos tendremos una aplicación Node (Backend) y en el segundo una web utilizando Parcel (Frontend).
 
 ## Comenzando
 
