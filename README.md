@@ -155,7 +155,7 @@ Donde especificamos:
 
 * `WORKDIR`: Directorio de la app.
 
-* `COPY`: Archivos que queremos copiar en el contenedor.
+* `COPY`: Archivos que queremos copiar a la imagen.
 
 * `RUN`: Instalación de las dependencias.
 
@@ -173,6 +173,52 @@ Al ejecutar `$ docker images`, nos debería aparecer la imagen de **Docker** que
 ![Captura7](src/assets/captures/cap7.png)
 
 ### 4. Crear nuestra web _Frontend_.
+
+Nos situamos sobre la carpeta _Frontend_:
+
+* **NPM**
+
+  Inicializamos el repo con npm:
+  ```
+  npm init -y
+  ```
+* **Instalación de ParcelJS**
+  ```
+  // Instalamos parcel en nuestro frontend para poder comprobar como está quedando nuestra aplicación.
+  npm install -D parcel-bundler
+  
+  // Punto de entrada para parcel.
+  npx parcel src/index.html
+  ```
+La estructura de archivos es la siguiente:  
+
+![Captura8](src/assets/captures/cap8.png)
+  
+Y pasamos a configurar nuestra web:
+
+* `index.html`
+
+![Captura9](src/assets/captures/cap9.png)
+
+* `index.css`
+
+![Captura10](src/assets/captures/cap10.png)
+
+* `index.js`
+
+![Captura11](src/assets/captures/cap11.png)
+
+Realizamos un fetch a la URL de la API de Node. 
+
+* `Avenger.js`
+
+![Captura12](src/assets/captures/cap12.png)
+
+A grandes rasgos, nuestra aplicación es similar a la _práctica 4: PokeDex_.
+
+Ahora, al igual que hicimos con **node**, debemos crear un contenedor para almacenar nuestra web frontend. En este caso, deberemos crear una imagen _multi-stage_. 
+
+
 
 
 
