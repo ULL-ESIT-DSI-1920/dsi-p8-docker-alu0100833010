@@ -109,33 +109,18 @@ Para ello comenzamos creando la estructura del proyecto.
   // Comprobamos que se ha instalado correctamente.
   $ docker --version
   ```
-  
-  
+   
+### 2. Configuración del Backend.
+
+Nos situamos sobre la carpeta _Backend_ 
 * **NPM**
 
   Inicializamos el repo con npm:
   ```
   npm init -y
   ```
-* **Linters**
-  ```
-  npm install -D eslint
-  ```
-* **Formateador de código: Prettier**
-  ```
-  // Configurar nuestro proyecto para Prettier
-  npm install -D prettier
   
-  // Plugins para evitar conflictos entre Prettier y ESLint.
-  npm install -D eslint-config.prettier eslint-plugin-prettier
-  ```
   
-  Tras esto, la estructura final del proyecto quedaría:
-  
-  ![Captura1](src/assets/captures/cap1.png)
-  
-### 2. Código _HTML_.
-
 La estrucutura de `index.html` es la siguiente:
 
  ![Captura2](src/assets/captures/cap3.png)
