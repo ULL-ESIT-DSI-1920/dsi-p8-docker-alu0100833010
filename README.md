@@ -68,19 +68,42 @@ Para ello comenzamos creando la estructura del proyecto.
   touch .gitignore
   touch README.md
   ```
+* **Instalación de Docker**
+
+  Pasos previos a la instalación:
+  ```
+  // Eliminamos paquetes obsoletos de Docker que pueden estar en nuestro sistema.
+  $ sudo apt-get remove \ 
+	  docker\	
+		docker-engine\
+		docker.io\
+		containerd\
+		runc 
+    
+  // Actualización.
+  $ sudo apt-get update
+  
+  // Instalamos paquetes que necesitamos para poder instalar docker.
+  $ sudo apt-get install apt-transport-https \
+	  ca-certificates \
+		curl \
+		cnupg2 \
+		software-properties-common
+  ```
+  
+  Instalación de _Docker_:
+  ```
+  // La primera línea añade una clave para añadir el repositorio, y el segundo añade los repos para instalar Docker. 
+
+  $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
+  $ sudo add-apt-repository “deb [arch=amd64] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) stable”
+
+  ```
 * **NPM**
 
   Inicializamos el repo con npm:
   ```
   npm init -y
-  ```
-* **Instalación de ParcelJS**
-  ```
-  // Instalamos parcel en nuestro proyecto.
-  npm install -D parcel-bundler
-  
-  // Punto de entrada para parcel.
-  npx parcel src/index.html
   ```
 * **Linters**
   ```
