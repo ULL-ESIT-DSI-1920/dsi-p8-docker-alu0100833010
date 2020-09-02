@@ -94,11 +94,23 @@ Para ello comenzamos creando la estructura del proyecto.
   Instalación de _Docker_:
   ```
   // La primera línea añade una clave para añadir el repositorio, y el segundo añade los repos para instalar Docker. 
-
   $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
   $ sudo add-apt-repository “deb [arch=amd64] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) stable”
+  
+  // Volvemos a actualizar el repositorio e instalamos los paquetes.
+  $ sudo apt-get update
+  $ sudo apt-get install docker-ce \
+  	docker-ce-cli \
+     	containerd.io
 
+  // Añadimos al usuario de ubuntu al grupo docker.
+  $ sudo usermod -aG docker $USER
+  
+  // Comprobamos que se ha instalado correctamente.
+  $ docker --version
   ```
+  
+  
 * **NPM**
 
   Inicializamos el repo con npm:
