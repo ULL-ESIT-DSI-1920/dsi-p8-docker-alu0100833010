@@ -244,12 +244,12 @@ En esta ocasión indicamos que el puerto 80 de este contenedor se envíe al puer
 
 ### 6. Unir frontend y backend con _Docker Compose_.
 
-Una vez tengamos ambos contenedores, nuestro objetivo será crear un fichero docker-compose.yml fuera de las carpetas frontend y backend para unir los dos contenedores
+Una vez tengamos ambos contenedores, nuestro objetivo será crear un fichero `docker-compose.yml` fuera de las carpetas _frontend_ y _backend_ para unir los dos contenedores
 anteriores. 
 
 La estructura de archivos es la siguiente:  
 
-![Captura](src/assets/captures/cap8.png)
+![Captura16](src/assets/captures/cap16.png)
 
 #### ¿Qué es Docker Compose?
 
@@ -263,8 +263,32 @@ volumenes, etc.
 	```
 	$ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/docker-compose
 	$ sudo chmod +x /usr/local/bin/docker-compose
+	
+	// Comprobamos que se ha instalado correctamente
 	$ docker-compose --version
 	```
-El fichero run.sh debe construir y levantar los servicios definidos en el archivo docker-compose.yml, esto es:
+El fichero `run.sh` debe construir y levantar los servicios definidos en el archivo `docker-compose.yml`, esto es:
 
+![Captura17](src/assets/captures/cap17.png)
 
+Por último, el `docker-compose.yml` debe definir dos servicios, uno para **node** y otro para **nginx** y los enlazamos por la misma network.
+
+![Captura18](src/assets/captures/cap18.png)
+
+Abrimos el puerto de **nginx** al 80 e indicamos en `build` el contexto de cada servicio.
+
+Finalmente ejecutamos `run.sh`:
+
+![Captura19](src/assets/captures/cap19.png)
+
+* `/`:
+
+![Captura20](src/assets/captures/cap20.png)
+
+* `/api`:
+
+![Captura21](src/assets/captures/cap21.png)
+
+* `/api/version`:
+
+![Captura22](src/assets/captures/cap22.png)
