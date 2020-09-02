@@ -112,14 +112,54 @@ Para ello comenzamos creando la estructura del proyecto.
    
 ### 2. Configuración del Backend.
 
-Nos situamos sobre la carpeta _Backend_ 
+Nos situamos sobre la carpeta _Backend_:
+
 * **NPM**
 
   Inicializamos el repo con npm:
   ```
   npm init -y
   ```
+La estructura de archivos es la siguiente:  
+
+![Captura1](src/assets/captures/cap1.png)
+
+Para correr nuestro servidor node con nuestra aplicación, ejecutamos `node server.js`.
+
+El primer _contenedor_ albergará una sencillísima aplicación **Node** en el fichero `server.js`, a la que instalaremos con npm la dependencia _express_. 
+
+![Captura2](src/assets/captures/cap2.png)
+
+Nuestra aplicación escuchará y responderá dos peticiones al correr nuestro servidor:
+
+* `/`: Petición a la página principal que nos devuelve la versión de la app.
+
+![Captura3](src/assets/captures/cap3.png)
+
+* `/api`: Petición a la ruta que nos devuelve un _JSON_ con información de los vengadores, incluidos en el fichero data.json.
+
+![Captura4](src/assets/captures/cap4.png)
+
+### 3. Dockerizar el Backend.
+
+Ahora, nuestro objetivo es crear un contenedor con esta aplicación. Con esto podríamos tener **Node** en dicho contenedor y no necesitarlo en nuestro sistema anfitrión para
+hacer funcionar la aplicación.
+
+Para ello, crearemos un fichero `Dockerfile`:
   
+![Captura5](src/assets/captures/cap5.png)  
+
+Donde especificamos:
+
+* `WORKDIR`: Directorio de la app.
+
+* `COPY`: Archivos que queremos copiar en el contenedor.
+
+* `RUN`: Instalación de las dependencias.
+
+* `EXPOSE`: Puerto de la aplicación.
+
+* `CMD`: Comando para ejecutar la app.
   
 La estrucutura de `index.html` es la siguiente:
 
