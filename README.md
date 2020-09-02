@@ -216,11 +216,9 @@ Realizamos un `fetch` a la URL de la API de **Node**.
 
 A grandes rasgos, nuestra aplicación es similar a la _práctica 4: PokeDex_.
 
+### 5. Dockerizar el _Frontend_.
+
 Ahora, al igual que hicimos con **node**, debemos crear un contenedor para almacenar nuestra web frontend. En este caso, deberemos crear una imagen _multi-stage_. 
-
-#### ¿Qué es NGINX?
-
-**Nginx** es un servidor web de código abierto que, desde su éxito inicial como servidor web, ahora también es usado como proxy inverso, cache de HTTP, y balanceador de carga.
 
 ![Captura13](src/assets/captures/cap13.png)
 
@@ -228,6 +226,25 @@ En el primer stage, copiaremos los archivos del proyecto, e instalaremos las dep
 
 En el segundo stage, montaremos un servidor web como **Nginx**, que obtendrá el build del stage anterior y la pondrá en la carpeta del servidor web.
 
+#### ¿Qué es NGINX?
 
+**Nginx** es un servidor web de código abierto que, desde su éxito inicial como servidor web, ahora también es usado como proxy inverso, cache de HTTP, y balanceador de carga.
 
+* **Configuración de NGINX**:
+
+	Sobreescribimos el fichero `/etc/nginx/conf.d/default.conf` de la imagen de docker de Nginx. Ahí debe estar nuestra propia configuración, que será, como mínimo, la
+	siguiente:
+
+	![Captura14](src/assets/captures/cap14.png)
+
+	En la primera ruta indicamos la carpeta donde hemos copiado nuestro _build_ para que envíe al usuario al `index.html` (frontend). En la segunda hay que hacer un
+	**proxy_pass** a nuestro _backend_.
+
+De la misma forma que el anterior, el fichero `run.sh` debe tener los comandos de **Docker** correspondientes:
+
+![Captura15](src/assets/captures/cap15.png)
+
+En esta ocasión indicamos que el puerto 80 de este contenedor se envíe al puerto 80 del equipo anfitrión.
+
+### 6. _Docker-compose_.
 
