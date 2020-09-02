@@ -208,7 +208,7 @@ Y pasamos a configurar nuestra web:
 
 ![Captura11](src/assets/captures/cap11.png)
 
-Realizamos un fetch a la URL de la API de Node. 
+Realizamos un `fetch` a la URL de la API de **Node**. 
 
 * `Avenger.js`
 
@@ -218,7 +218,15 @@ A grandes rasgos, nuestra aplicación es similar a la _práctica 4: PokeDex_.
 
 Ahora, al igual que hicimos con **node**, debemos crear un contenedor para almacenar nuestra web frontend. En este caso, deberemos crear una imagen _multi-stage_. 
 
+#### ¿Qué es NGINX?
 
+**Nginx** es un servidor web de código abierto que, desde su éxito inicial como servidor web, ahora también es usado como proxy inverso, cache de HTTP, y balanceador de carga.
+
+![Captura13](src/assets/captures/cap13.png)
+
+En el primer stage, copiaremos los archivos del proyecto, e instalaremos las dependencias de node que pudieramos tener y las globales (como _parcel_), y generaremos el _build_.
+
+En el segundo stage, montaremos un servidor web como **Nginx**, que obtendrá el build del stage anterior y la pondrá en la carpeta del servidor web.
 
 
 
